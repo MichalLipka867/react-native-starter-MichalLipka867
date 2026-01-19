@@ -24,9 +24,63 @@ Stwórz podstawową aplikację mobilną w **React Native (React)**, która wykor
 - Zweryfikuj: błędy/edge cases (brak uprawnień, brak internetu).
 
 ## Definition of Done (DoD)
-- [ ] 3–4 kompletne widoki zgodne z opisem.
-- [ ] Użyta co najmniej **1 natywna funkcja**.
-- [ ] Integracja z **API** (co najmniej 1 żądanie).
-- [ ] Czytelny UI + podstawowa dostępność.
-- [ ] Aktualizacja `README.md` z opisem funkcji i sposobem testowania.
-- [ ] Min. 3 logiczne commity.
+- [x] 3–4 kompletne widoki zgodne z opisem.
+- [x] Użyta co najmniej **1 natywna funkcja**.
+- [x] Integracja z **API** (co najmniej 1 żądanie).
+- [x] Czytelny UI + podstawowa dostępność.
+- [x] Aktualizacja `README.md` z opisem funkcji i sposobem testowania.
+- [x] Min. 3 logiczne commity.
+
+---
+
+## Opis aplikacji
+
+Aplikacja Field Notes pozwala tworzyć notatki terenowe z lokalizacją GPS i zdjęciami.
+
+### Funkcje
+- **4 widoki**: Lista notatek, Szczegóły, Dodaj/Edytuj, Ustawienia
+- **Natywne funkcje**:
+  - 📷 Aparat - robienie zdjęć do notatek
+  - 🖼️ Galeria - wybieranie zdjęć z galerii
+  - 📍 GPS - zapisywanie lokalizacji z adresem
+- **API**: Integracja z JSONPlaceholder (pobieranie przykładowych notatek, zapisywanie nowych)
+- **Storage**: Lokalne przechowywanie w AsyncStorage
+- **Dostępność**: Etykiety dostępności, przyciski min. 48px, czytniki ekranu
+
+### Instalacja i uruchomienie
+
+```bash
+npm install
+npx expo start
+```
+
+Następnie wybierz urządzenie/emulator (a - Android, i - iOS).
+
+### Testowanie
+
+1. **Dodanie notatki**: 
+   - Naciśnij "+" na liście
+   - Podaj tytuł
+   - Opcjonalnie: dodaj zdjęcie (aparat/galeria) lub pobierz lokalizację
+   - Zapisz
+
+2. **Natywne funkcje**:
+   - Aparat: przycisk "📷 Zrób zdjęcie" - wymaga uprawnień
+   - GPS: przycisk "📍 Pobierz lokalizację" - wymaga uprawnień
+
+3. **API**:
+   - Przy pierwszym uruchomieniu pobiera 5 przykładowych notatek z JSONPlaceholder
+   - Nowe notatki są wysyłane do API (POST /posts)
+
+4. **Edge cases**:
+   - Brak uprawnień - pokazuje alert
+   - Brak internetu - API zwraca błąd, ale lokalne zapisywanie działa
+   - Pusta lista - pokazuje komunikat "Brak notatek"
+
+### Technologie
+- React Native (Expo)
+- React Navigation
+- Expo Image Picker (kamera/galeria)
+- Expo Location (GPS)
+- AsyncStorage (lokalne przechowywanie)
+- JSONPlaceholder API
